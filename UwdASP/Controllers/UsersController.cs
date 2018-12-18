@@ -1,20 +1,138 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using System;
+using System.IdentityModel.Tokens.Jwt;
+using System.Linq;
+using System.Security.Claims;
+using System.Text;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
+using Microsoft.IdentityModel.Tokens;
+using UwdASP.API.Models;
 using UwdASP.Data;
 using UwdASP.Data.Models;
+using UwdASP.Security;
+using UwdASP.Security.Validation;
 
 namespace UwdASP.Controllers
 {
-    public class UsersController
+    public class UsersController : Controller
     {
         protected UwdDbContext DbContext;
         protected UserManager<User> UserManager;
         protected SignInManager<User> SignInManager;
+        protected IConfiguration Configuration;
+        protected IUserValidator UserValidator;
 
-        public UsersController(UwdDbContext dbContext, UserManager<User> userManager, SignInManager<User> signInManager)
+        public UsersController(IConfiguration configuration, UwdDbContext dbContext, UserManager<User> userManager,
+            SignInManager<User> signInManager, IUserValidator userValidator)
         {
             DbContext = dbContext;
             UserManager = userManager;
             SignInManager = signInManager;
+            Configuration = configuration;
+            UserValidator = userValidator;
         }
+
+        [HttpPost]
+        public async Task<IActionResult> Login([FromBody]LoginRequest request)
+        {
+            var error = await UserValidator.ValidateLogin(request);
+            if (!string.IsNullOrEmpty(error))
+            {
+                return new BadRequestObjectResult(new
+                {
+                    validation_error = error
+                });
+            }
+
+            var user = await UserManager.FindByNameAsync(request.Username);
+            var claims = new[]
+            {
+                new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString("N")),
+                new Claim(JwtRegisteredClaimNames.Email, user.Email),
+                new Claim(ClaimsIdentity.DefaultNameClaimType, user.UserName)
+            };
+
+            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["Jwt:SecretKey"]));
+            var credentials = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
+            var expirationTime = DateTime.Now.Add(TimeSpan.FromSeconds(long.Parse(Configuration["Jwt:Expiration"])));
+
+            var token = new JwtSecurityToken(
+                issuer: Configuration["Jwt:Issuer"],
+                audience: Configuration["Jwt:Audience"],
+                claims: claims,
+                signingCredentials: credentials,
+                expires: expirationTime
+            );
+
+            var tokenString = new JwtSecurityTokenHandler().WriteToken(token);
+
+            DbContext.Sessions.Add(new Session
+            {
+                UserId = user.Id,
+                Identity = user,
+                Expiration = expirationTime,
+                Token = tokenString,
+                IsActive = true
+            });
+
+            DbContext.SaveChanges();
+
+            return new OkObjectResult(new
+            {
+                token = tokenString
+            }); 
+        }
+
+        [HttpPost]
+        [AuthorizeToken]
+        public async Task<IActionResult> Logout()
+        {
+            var user = await UserManager.FindByNameAsync(HttpContext.User.Identity.Name);
+
+            var userSession = DbContext.Sessions.SingleOrDefault(session => session.UserId == user.Id && session.IsActive);
+            if (userSession != null)
+            {
+                userSession.IsActive = false;
+                DbContext.Sessions.Update(userSession);
+                DbContext.SaveChanges();
+                return new OkResult();
+            }
+            else
+            {
+                return new BadRequestResult();
+            }
+        }
+
+        [HttpGet]
+        [AuthorizeToken]
+        public async Task<IActionResult> Profile()
+        {
+            var user = await UserManager.FindByNameAsync(HttpContext.User.Identity.Name);
+            object userData = null;
+
+
+
+            switch (user.UserType)
+            {
+                case UserType.Student:
+                {
+                    userData = DbContext.StudentsData.SingleOrDefault(sd => sd.UserId == user.Id);
+                    break;
+                }
+                case UserType.Teacher:
+                {
+                    userData = DbContext.TeachersData.SingleOrDefault(td => td.UserId == user.Id);
+                    break;
+                }
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+
+            return userData != null ? new OkObjectResult(userData) : new OkObjectResult(user);
+        }
+
     }
 }

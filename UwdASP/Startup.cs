@@ -9,6 +9,7 @@ using Microsoft.IdentityModel.Tokens;
 using UwdASP.Data;
 using UwdASP.Data.Models;
 using System.Text;
+using UwdASP.Security.Validation;
 
 namespace UwdASP
 {
@@ -57,6 +58,9 @@ namespace UwdASP
 
             services.AddMvc();
             services.AddCors();
+
+            services.AddSingleton(Configuration);
+            services.AddScoped<IUserValidator, UserValidator>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -14,14 +14,12 @@ namespace UwdASP.Data
         public DbSet<Specialization> Specializations { get; set; }
         public DbSet<Schedule> Schedules { get; set; }
         public DbSet<StudentData> StudentsData { get; set; }
-        public DbSet<TeacherData> Teachers { get; set; }
+        public DbSet<TeacherData> TeachersData { get; set; }
         public DbSet<TeacherGroup> TeacherGroups { get; set; }
         public DbSet<Presence> Presences { get; set; }
+        public DbSet<Session> Sessions { get; set; }
              
-        public UwdDbContext(DbContextOptions options) : base(options)
-        {
-            
-        }
+        public UwdDbContext(DbContextOptions options) : base(options) {}
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -40,6 +38,7 @@ namespace UwdASP.Data
                 .HasConversion(
                     v => v.ToString(),
                     v => (MarkType)Enum.Parse(typeof(MarkType), v));
+
             modelBuilder
                 .Entity<StudentData>()
                 .Property(sd => sd.StudyType)
