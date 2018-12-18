@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Security.Claims;
@@ -8,7 +9,9 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
+using Newtonsoft.Json.Linq;
 using UwdASP.API.Models;
 using UwdASP.Data;
 using UwdASP.Data.Models;
@@ -106,14 +109,21 @@ namespace UwdASP.Controllers
             }
         }
 
+        [HttpPost]
+        [AuthorizeToken]
+        public async Task<IActionResult> Register([FromBody]RegisterRequest request)
+        {
+            // TODO: implement user registration
+
+            return new OkResult();
+        }
+
         [HttpGet]
         [AuthorizeToken]
         public async Task<IActionResult> Profile()
         {
             var user = await UserManager.FindByNameAsync(HttpContext.User.Identity.Name);
             object userData = null;
-
-
 
             switch (user.UserType)
             {
@@ -132,6 +142,41 @@ namespace UwdASP.Controllers
             }
 
             return userData != null ? new OkObjectResult(userData) : new OkObjectResult(user);
+        }
+
+        [HttpGet]
+        [AuthorizeToken]
+        public async Task<IActionResult> MyStudents()
+        {
+            var user = await UserManager.FindByNameAsync(HttpContext.User.Identity.Name);
+
+            if (user.UserType != UserType.Teacher)
+            {
+                return new UnauthorizedResult();
+            }
+
+            var teacherDataId = DbContext.TeachersData
+                .Where(td => td.UserId == user.Id)
+                .Select(td => td.Id)
+                .SingleOrDefault();
+
+            var groupIds = DbContext.TeacherGroups
+                .Where(tg => tg.TeacherDataId == teacherDataId)
+                .Select(tg => tg.GroupId)
+                .ToHashSet();
+
+            var studentsData = DbContext.StudentsData
+                .Where(sd => groupIds.Contains(sd.GroupId))
+                .Select(sd => new JObject(
+                    new JProperty("user_id", sd.Identity.Id),
+                    new JProperty("imie", sd.Identity.FirstName),
+                    new JProperty("nazwisko", sd.Identity.LastName),
+                    new JProperty("kierunek", sd.Specialization.Name),
+                    new JProperty("semester", sd.Semester),
+                    new JProperty("grupa", sd.Group.Name)))
+                .ToList();
+
+            return new OkObjectResult(studentsData);
         }
 
     }

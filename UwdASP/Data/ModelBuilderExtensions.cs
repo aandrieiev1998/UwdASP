@@ -482,6 +482,30 @@ namespace UwdASP.Data
 
             #endregion
 
+            #region TeacherGroups
+
+            modelBuilder.Entity<TeacherGroup>().HasData(
+                new TeacherGroup
+                {
+                    Id = 1L,
+                    GroupId = 1L,
+                    TeacherDataId = 3L
+                },
+                new TeacherGroup
+                {
+                    Id = 2L,
+                    GroupId = 2L,
+                    TeacherDataId = 1L
+                },
+                new TeacherGroup
+                {
+                    Id = 3L,
+                    GroupId = 3L,
+                    TeacherDataId = 3L
+                });
+
+            #endregion
+
         }
     }
 }

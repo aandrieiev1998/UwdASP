@@ -1,6 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using UwdASP.Data.Models;
 
 namespace UwdASP.Data.Models
 {
@@ -9,14 +8,12 @@ namespace UwdASP.Data.Models
         [Key]
         public long Id { get; set; }
 
-        [ForeignKey("Teacher")]
-        public long TeacherId { get; set; }
-
+        [ForeignKey("TeacherData")]
+        public long TeacherDataId { get; set; }
         public virtual TeacherData TeacherData { get; set; }
 
         [ForeignKey("Group")]
         public long GroupId { get; set; }
-
         public virtual Group Group { get; set; }
     }
 }

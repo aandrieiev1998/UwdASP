@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using UwdASP.Data;
@@ -9,9 +10,10 @@ using UwdASP.Data;
 namespace UwdASP.Migrations
 {
     [DbContext(typeof(UwdDbContext))]
-    partial class UwdDbContextModelSnapshot : ModelSnapshot
+    [Migration("20181218205754_Sixth")]
+    partial class Sixth
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -634,26 +636,6 @@ namespace UwdASP.Migrations
                     b.HasIndex("TeacherDataId");
 
                     b.ToTable("TeacherGroups");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1L,
-                            GroupId = 1L,
-                            TeacherDataId = 3L
-                        },
-                        new
-                        {
-                            Id = 2L,
-                            GroupId = 2L,
-                            TeacherDataId = 1L
-                        },
-                        new
-                        {
-                            Id = 3L,
-                            GroupId = 3L,
-                            TeacherDataId = 3L
-                        });
                 });
 
             modelBuilder.Entity("UwdASP.Data.Models.User", b =>
@@ -718,7 +700,7 @@ namespace UwdASP.Migrations
                         {
                             Id = 1L,
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "4f234dd4-cde6-4ae2-84f7-7da4b04bd5bc",
+                            ConcurrencyStamp = "59dbff4b-ea42-4420-b1f7-5a252e71b9e6",
                             Email = "aandrieiev@gmail.com",
                             EmailConfirmed = false,
                             FirstName = "Andrieiev",
@@ -726,7 +708,7 @@ namespace UwdASP.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "AANDRIEIEV@GMAIL.COM",
                             NormalizedUserName = "AANDRIEIEV",
-                            PasswordHash = "AQAAAAEAACcQAAAAEFddn9TkuNFk/hzjf2nvOtDCz3DAsiVB0HRdEs3/rs9AHmSVvtAxL71Naa5bAARWAA==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEEljrrt+LqOnZP/mA92cNRvuDUGIXilMncZ3uOv/eEHkzRlKyWoibEE0jN2eSr88bw==",
                             PhoneNumber = "+48537018321",
                             PhoneNumberConfirmed = false,
                             TwoFactorEnabled = false,
@@ -737,7 +719,7 @@ namespace UwdASP.Migrations
                         {
                             Id = 2L,
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "849cff39-65bd-4f33-a865-fb7e53cb92ca",
+                            ConcurrencyStamp = "ab7d2dc8-0c12-4241-884e-86be7287ed16",
                             Email = "dszewczenko@mail.ru",
                             EmailConfirmed = false,
                             FirstName = "Dmytro",
@@ -745,7 +727,7 @@ namespace UwdASP.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "DSZEWCZENKO@MAIL.RU",
                             NormalizedUserName = "DSZEWCZENKO",
-                            PasswordHash = "AQAAAAEAACcQAAAAEDybxpy3m6aRo+tFYOMKmOIWVg1/auucroIT5jAaSExyyL41TQ2p4tPiI+HFX+KmKQ==",
+                            PasswordHash = "AQAAAAEAACcQAAAAED4Q7mcwqSMJUAWCTPXZU4fDZkN1K0HkVifucmCV5kVhYU31ipiWRdnHdfdzzldTEw==",
                             PhoneNumber = "+4856433666",
                             PhoneNumberConfirmed = false,
                             TwoFactorEnabled = false,
@@ -756,7 +738,7 @@ namespace UwdASP.Migrations
                         {
                             Id = 3L,
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "3a9cfa81-1f0e-444b-a137-db819883f9ba",
+                            ConcurrencyStamp = "9f059057-85f3-4891-94eb-4bc4225632f5",
                             Email = "mmorrison@gmail.com",
                             EmailConfirmed = false,
                             FirstName = "Mykhailo",
@@ -764,7 +746,7 @@ namespace UwdASP.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "MMORRISON@GMAIL.COM",
                             NormalizedUserName = "MMORRISON",
-                            PasswordHash = "AQAAAAEAACcQAAAAECcW05HbEug8KeNRQS4xN2xFcQjQ3ZjTrKFROIz963iDY0mKQ+4OX3C+qbspKt8RQg==",
+                            PasswordHash = "AQAAAAEAACcQAAAAENDzkOxBuAohClFgOX1rQTE71yFT9LH3ECtIhR25q1SC2tqhutWmWwqOuPmZrb6kWg==",
                             PhoneNumber = "+4856666666",
                             PhoneNumberConfirmed = false,
                             TwoFactorEnabled = false,
@@ -775,7 +757,7 @@ namespace UwdASP.Migrations
                         {
                             Id = 4L,
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "2559daeb-c8a1-4c94-a62d-07ae0ba80aec",
+                            ConcurrencyStamp = "0abfd180-7c58-4b34-903e-6407a188d23a",
                             Email = "srazovyi@gmail.com",
                             EmailConfirmed = false,
                             FirstName = "Serhii",
@@ -783,7 +765,7 @@ namespace UwdASP.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "SRAZOVYI@GMAIL.COM",
                             NormalizedUserName = "SRAZOVYI",
-                            PasswordHash = "AQAAAAEAACcQAAAAEKrdRj8fiDl/zXDz1zL60By4uxvO8X9kldjMhL4SK1+lb2PoLEpUxf9vhcUynxAEIQ==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEEoov+U1IgGlbcczs9kJwtwGQOo/UOCa54oGtCMuKEqHjZ4z18LVyW9Q9bAqOFIXXA==",
                             PhoneNumber = "+486565346521",
                             PhoneNumberConfirmed = false,
                             TwoFactorEnabled = false,
@@ -794,7 +776,7 @@ namespace UwdASP.Migrations
                         {
                             Id = 5L,
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "68570ba8-5c84-464e-b59e-637165cbd97a",
+                            ConcurrencyStamp = "93c6fb34-4bea-4a9f-a33f-937404e1ad6d",
                             Email = "mkowalska@gmail.com",
                             EmailConfirmed = false,
                             FirstName = "Matylda",
@@ -802,7 +784,7 @@ namespace UwdASP.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "MKOWALSKA@GMAIL.COM",
                             NormalizedUserName = "MKOWALSKA",
-                            PasswordHash = "AQAAAAEAACcQAAAAEHt/WjvbDqYIe2R/HhvR3olOskKcXAICNyekmpCzxhBcgQwMZixxJWAUDNKmu71LyA==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEGfwzFjnQvAM2vVZfCO4Cxgn9wra9xqOM8yLhaUwLQ2wDMAqUC7BwamWyGCDaTB1WA==",
                             PhoneNumber = "+48656534642",
                             PhoneNumberConfirmed = false,
                             TwoFactorEnabled = false,
@@ -813,7 +795,7 @@ namespace UwdASP.Migrations
                         {
                             Id = 6L,
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "41d614fe-47e2-4036-983d-d4c983006f67",
+                            ConcurrencyStamp = "d146540e-096e-4669-b486-55cb573dc752",
                             Email = "awawrzyniak@gmail.com",
                             EmailConfirmed = false,
                             FirstName = "Antonina",
@@ -821,7 +803,7 @@ namespace UwdASP.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "AWAWRZYNIAK@GMAIL.COM",
                             NormalizedUserName = "AWAWRZYNIAK",
-                            PasswordHash = "AQAAAAEAACcQAAAAEMDWOytPlLlKsDRos+lb8c9yJ1W2C84a3203HS3aUqwYc/+zitzK7pKg8Oj0QcoXiw==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEP3Pt0nrZEjh2RAoaF5XP7KaJM55hJ3nbI03A+EX9dKlVn8btEVcbUvV86ROg++t9Q==",
                             PhoneNumber = "+4865653464",
                             PhoneNumberConfirmed = false,
                             TwoFactorEnabled = false,
@@ -832,7 +814,7 @@ namespace UwdASP.Migrations
                         {
                             Id = 7L,
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "a40b3858-122e-441d-b838-416bad701265",
+                            ConcurrencyStamp = "ccf8f27e-946f-4462-8ed2-88ca286af079",
                             Email = "skarpiński@gmail.com",
                             EmailConfirmed = false,
                             FirstName = "Szymon",
@@ -840,7 +822,7 @@ namespace UwdASP.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "SKARPIŃSKI@GMAIL.COM",
                             NormalizedUserName = "SKARPIŃSKI",
-                            PasswordHash = "AQAAAAEAACcQAAAAEIaRzwe5uPX0tFqvoO40UwQmCS+v29o7yMOmRss3Q85hlOUI8L810oOSRaEm/gnUJA==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEBZXM8+VoyEWv5JBpRuMh+ZAMdsjQl+khFZblT3v+94K4tbAVwwMFTbliILEZ4Nh5g==",
                             PhoneNumber = "+4865653465",
                             PhoneNumberConfirmed = false,
                             TwoFactorEnabled = false,
@@ -851,7 +833,7 @@ namespace UwdASP.Migrations
                         {
                             Id = 8L,
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "17e88f29-aa65-4e3a-8bd0-0df455699ac0",
+                            ConcurrencyStamp = "984aeb9a-d641-444b-bf38-7def7717c336",
                             Email = "kpawłowska@gmail.com",
                             EmailConfirmed = false,
                             FirstName = "Kinga",
@@ -859,7 +841,7 @@ namespace UwdASP.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "KPAWŁOWSKA@GMAIL.COM",
                             NormalizedUserName = "KPAWŁOWSKA",
-                            PasswordHash = "AQAAAAEAACcQAAAAEHZ3xTx11PqjuSATMQc3JjMjqx2vXY+AiLe8PZt48yRgX8gIdck1BsG/xbbTL4vESQ==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEIH3QXnGPoB05uwIQzjjhXF/bOXLozBU8V9EAqrjGEWx3mAdjp0WH188nTqo2W9qhQ==",
                             PhoneNumber = "+4865653466",
                             PhoneNumberConfirmed = false,
                             TwoFactorEnabled = false,
@@ -870,7 +852,7 @@ namespace UwdASP.Migrations
                         {
                             Id = 9L,
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "544ac57c-45f5-4094-ae1b-c2448d8d0be4",
+                            ConcurrencyStamp = "79c21260-6dd4-4ada-872b-70248712beca",
                             Email = "krychlicki@gmail.com",
                             EmailConfirmed = false,
                             FirstName = "Kicior",
@@ -878,7 +860,7 @@ namespace UwdASP.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "KRYCHLICKI@GMAIL.COM",
                             NormalizedUserName = "KRYCHLICKI",
-                            PasswordHash = "AQAAAAEAACcQAAAAEBnVwPCX5Jt/kK2idHKRCNMOAnyG9+K9NAx+tnEFLoyLp4TU5PVyoxUksSTQN7a2Kw==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEML5VXDaeFuF89HJ1p7/qOpXJfrX/8MWQ55lBGSQfAkMFAzr2WCGCTfEATz1DpTFLg==",
                             PhoneNumber = "+486546546542",
                             PhoneNumberConfirmed = false,
                             TwoFactorEnabled = false,
@@ -889,7 +871,7 @@ namespace UwdASP.Migrations
                         {
                             Id = 10L,
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "97d58530-6f72-4460-ac87-0c1e9c23e174",
+                            ConcurrencyStamp = "a055e74b-27db-4ec7-88e6-96bc244c6d9b",
                             Email = "aniewiamodmski@gmail.com",
                             EmailConfirmed = false,
                             FirstName = "Adam",
@@ -897,7 +879,7 @@ namespace UwdASP.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "ANIEWIADOMSKI@GMAIL.COM",
                             NormalizedUserName = "ANIEWIADOMSKI",
-                            PasswordHash = "AQAAAAEAACcQAAAAEP3AIrlgP9HZP9ce3mGA+jT659MFCdzK5yZaYCVVx5Hxw6urKBXfF0CgamXPh+z/aw==",
+                            PasswordHash = "AQAAAAEAACcQAAAAENfCUOLGjUHv1XZdLkluzVbpkGwJcfGW4BZffHiaqfxUiW6NiIUdWomKWKua7Efztg==",
                             PhoneNumber = "+486542546443",
                             PhoneNumberConfirmed = false,
                             TwoFactorEnabled = false,
@@ -908,7 +890,7 @@ namespace UwdASP.Migrations
                         {
                             Id = 11L,
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "17b33b20-6ee0-4974-939f-592f504d1efb",
+                            ConcurrencyStamp = "7e724c5c-e76f-4a24-be68-7b4f9a47d54c",
                             Email = "mkacperski@gmail.com",
                             EmailConfirmed = false,
                             FirstName = "Maciej",
@@ -916,7 +898,7 @@ namespace UwdASP.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "MKACPERSKI@GMAIL.COM",
                             NormalizedUserName = "MKACPERSKI",
-                            PasswordHash = "AQAAAAEAACcQAAAAEGF8Nz04exASuWlPQFKOhJRzgeIDm7AyHLeLjz2O6jO1/cZhS0RT7WujsnvIg5ulVw==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEOSs4Xd1J9mjraeOjHugkuDwTeQNcwvuVrCv484dgBLdMDzGisqVPXGFrtafNH3onQ==",
                             PhoneNumber = "+489541543785",
                             PhoneNumberConfirmed = false,
                             TwoFactorEnabled = false,
