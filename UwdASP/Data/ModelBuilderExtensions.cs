@@ -67,9 +67,61 @@ namespace UwdASP.Data
                     PasswordHash = new PasswordHasher<User>().HashPassword(null, "password"),
                     PhoneNumber = "+486565346521"
                 },
+                 new User
+                 {
+                     Id = 5L,
+                     FirstName = "Matylda",
+                     LastName = "Kowalska",
+                     UserType = UserType.Student,
+                     UserName = "mkowalska",
+                     NormalizedUserName = "MKOWALSKA",
+                     Email = "mkowalska@gmail.com",
+                     NormalizedEmail = "MKOWALSKA@GMAIL.COM",
+                     PasswordHash = new PasswordHasher<User>().HashPassword(null, "password"),
+                     PhoneNumber = "+48656534642"
+                 },
+                  new User
+                  {
+                      Id = 6L,
+                      FirstName = "Antonina",
+                      LastName = "Wawrzyniak",
+                      UserType = UserType.Student,
+                      UserName = "awawrzyniak",
+                      NormalizedUserName = "AWAWRZYNIAK",
+                      Email = "awawrzyniak@gmail.com",
+                      NormalizedEmail = "AWAWRZYNIAK@GMAIL.COM",
+                      PasswordHash = new PasswordHasher<User>().HashPassword(null, "password"),
+                      PhoneNumber = "+4865653464"
+                  },
+                  new User
+                  {
+                      Id = 7L,
+                      FirstName = "Szymon",
+                      LastName = "Karpiński",
+                      UserType = UserType.Student,
+                      UserName = "skarpiński",
+                      NormalizedUserName = "SKARPIŃSKI",
+                      Email = "skarpiński@gmail.com",
+                      NormalizedEmail = "SKARPIŃSKI@GMAIL.COM",
+                      PasswordHash = new PasswordHasher<User>().HashPassword(null, "password"),
+                      PhoneNumber = "+4865653465"
+                  },
+                  new User
+                  {
+                      Id = 8L,
+                      FirstName = "Kinga",
+                      LastName = "Pawłowska",
+                      UserType = UserType.Student,
+                      UserName = "kpawłowska",
+                      NormalizedUserName = "KPAWŁOWSKA",
+                      Email = "kpawłowska@gmail.com",
+                      NormalizedEmail = "KPAWŁOWSKA@GMAIL.COM",
+                      PasswordHash = new PasswordHasher<User>().HashPassword(null, "password"),
+                      PhoneNumber = "+4865653466"
+                  },
                 new User
                 {
-                    Id = 5L,
+                    Id = 9L,
                     FirstName = "Kicior",
                     LastName = "Rychlicki",
                     UserType = UserType.Teacher,
@@ -82,7 +134,7 @@ namespace UwdASP.Data
                 },
                 new User
                 {
-                    Id = 6L,
+                    Id = 10L,
                     FirstName = "Adam",
                     LastName = "Niewiamodmski",
                     UserType = UserType.Teacher,
@@ -95,7 +147,7 @@ namespace UwdASP.Data
                 },
                 new User
                 {
-                    Id = 7L,
+                    Id = 11L,
                     FirstName = "Maciej",
                     LastName = "Kacperski",
                     UserType = UserType.Teacher,
@@ -123,7 +175,25 @@ namespace UwdASP.Data
                     Id = 2L,
                     Semester = 7,
                     Name = "Sieci komputerowe Gr. 2"
-                }
+                },
+                new Group
+                {
+                    Id = 3L,
+                    Semester = 6,
+                    Name = "Programowanie"
+                },
+                new Group
+                {
+                    Id = 4L,
+                    Semester = 5,
+                    Name = "Programowanie"
+                },
+                 new Group
+                 {
+                     Id = 5L,
+                     Semester = 4,
+                     Name = "Programowanie"
+                 }
                 );
 
             #endregion
@@ -176,7 +246,7 @@ namespace UwdASP.Data
                     UserId = 2L,
                     SpecializationId = 1L,
                     Semester = 7,
-                    GroupId = 1L,
+                    GroupId = 2L,
                     Balance = 1650.0f,
                     BankAccountNumber = 123456789,
                     Index = 29283,
@@ -200,12 +270,60 @@ namespace UwdASP.Data
                     UserId = 4L,
                     SpecializationId = 2L,
                     Semester = 7,
-                    GroupId = 2L,
+                    GroupId = 3L,
                     Balance = 1337.0f,
                     BankAccountNumber = 123456789,
                     Index = 29285,
                     StudyBeginningDate = DateTime.Parse("01-10-2015")
-                }
+                },
+                 new StudentData
+                 {
+                     Id = 5L,
+                     UserId = 5L,
+                     SpecializationId = 2L,
+                     Semester = 7,
+                     GroupId = 3L,
+                     Balance = 1337.0f,
+                     BankAccountNumber = 123456789,
+                     Index = 29285,
+                     StudyBeginningDate = DateTime.Parse("01-10-2015")
+                 },
+                 new StudentData
+                 {
+                     Id = 6L,
+                     UserId = 6L,
+                     SpecializationId = 1L,
+                     Semester = 7,
+                     GroupId = 4L,
+                     Balance = 9999.0f,
+                     BankAccountNumber = 123456789,
+                     Index = 29286,
+                     StudyBeginningDate = DateTime.Parse("01-10-2015")
+                 },
+                 new StudentData
+                 {
+                     Id = 7L,
+                     UserId = 7L,
+                     SpecializationId = 1L,
+                     Semester = 7,
+                     GroupId = 1L,
+                     Balance = 2400.0f,
+                     BankAccountNumber = 123456789,
+                     Index = 29287,
+                     StudyBeginningDate = DateTime.Parse("01-10-2015")
+                 },
+                 new StudentData
+                 {
+                     Id = 8L,
+                     UserId = 8L,
+                     SpecializationId = 1L,
+                     Semester = 7,
+                     GroupId = 1L,
+                     Balance = 5000.0f,
+                     BankAccountNumber = 123456789,
+                     Index = 29288,
+                     StudyBeginningDate = DateTime.Parse("01-10-2015")
+                 }
                 );
 
             #endregion
@@ -216,17 +334,17 @@ namespace UwdASP.Data
                 new TeacherData
                 {
                     Id = 1L,
-                    UserId = 5L
+                    UserId = 9L
                 },
                 new TeacherData
                 {
                     Id = 2L,
-                    UserId = 6L
+                    UserId = 10L
                 },
                 new TeacherData
                 {
                     Id = 3L,
-                    UserId = 7L
+                    UserId = 11L
                 });
 
             #endregion
@@ -281,7 +399,7 @@ namespace UwdASP.Data
                 {
                     Id = 1L,
                     LessonId = 4L,
-                    TeacherDataId = 3L,
+                    TeacherDataId = 1L,
                     StudentDataId = 1L,
                     Value = 5.0f,
                     Date = DateTime.Parse("2018-11-09T12:34:42"),
@@ -298,6 +416,68 @@ namespace UwdASP.Data
                     Date = DateTime.Parse("2018-11-10T13:05:07"),
                     MarkType = MarkType.Regular,
                     Comment = "Elegancko"
+                },
+                new Mark
+                {
+                    Id = 3L,
+                    LessonId = 3L,
+                    TeacherDataId = 2L,
+                    StudentDataId = 8L,
+                    Value = 4.5f,
+                    Date = DateTime.Parse("2018-11-10T13:05:02"),
+                    MarkType = MarkType.Regular,
+                    Comment = "Elegancko"
+                },
+                new Mark
+                {
+                    Id = 4L,
+                    LessonId = 5L,
+                    TeacherDataId = 3L,
+                    StudentDataId = 6L,
+                    Value = 3.5f,
+                    Date = DateTime.Parse("2018-11-10T13:05:09"),
+                    MarkType = MarkType.Regular,
+                    Comment = "Wystarczy"
+                }, new Mark
+                {
+                    Id = 5L,
+                    LessonId = 3L,
+                    TeacherDataId = 3L,
+                    StudentDataId = 7L,
+                    Value = 5.0f,
+                    Date = DateTime.Parse("2018-11-10T13:05:09"),
+                    MarkType = MarkType.Regular,
+                    Comment = "Idealnie"
+                }, new Mark
+                {
+                    Id = 6L,
+                    LessonId = 5L,
+                    TeacherDataId = 3L,
+                    StudentDataId = 2L,
+                    Value = 5.0f,
+                    Date = DateTime.Parse("2018-11-10T13:05:09"),
+                    MarkType = MarkType.Regular,
+                    Comment = "Idealnie"
+                }, new Mark
+                {
+                    Id = 7L,
+                    LessonId = 8L,
+                    TeacherDataId = 3L,
+                    StudentDataId = 3L,
+                    Value = 3.0f,
+                    Date = DateTime.Parse("2018-11-10T13:05:09"),
+                    MarkType = MarkType.Regular,
+                    Comment = "No niestety"
+                }, new Mark
+                {
+                    Id = 8L,
+                    LessonId = 6L,
+                    TeacherDataId = 2L,
+                    StudentDataId = 6L,
+                    Value = 5.0f,
+                    Date = DateTime.Parse("2018-11-10T13:05:09"),
+                    MarkType = MarkType.Regular,
+                    Comment = "Idealnie"
                 });
 
             #endregion
