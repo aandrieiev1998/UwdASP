@@ -1,15 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
 using Newtonsoft.Json.Linq;
 using UwdASP.API.Models;
@@ -169,8 +166,9 @@ namespace UwdASP.Controllers
                 .Where(sd => groupIds.Contains(sd.GroupId))
                 .Select(sd => new JObject(
                     new JProperty("user_id", sd.Identity.Id),
-                    new JProperty("imie", sd.Identity.FirstName),
-                    new JProperty("nazwisko", sd.Identity.LastName),
+                    new JProperty("first_name", sd.Identity.FirstName),
+                    new JProperty("last_name", sd.Identity.LastName),
+                    new JProperty("index", sd.Index),
                     new JProperty("kierunek", sd.Specialization.Name),
                     new JProperty("semester", sd.Semester),
                     new JProperty("grupa", sd.Group.Name)))

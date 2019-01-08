@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using UwdASP.Data.Models;
+using UwdASP.Data.Models.Bookkeepings;
+using UwdASP.Data.Models.Marks;
 
 namespace UwdASP.Data
 {
@@ -18,6 +20,7 @@ namespace UwdASP.Data
         public DbSet<TeacherGroup> TeacherGroups { get; set; }
         public DbSet<Presence> Presences { get; set; }
         public DbSet<Session> Sessions { get; set; }
+        public DbSet<Bookkeeping> Bookkeepings { get; set; }
              
         public UwdDbContext(DbContextOptions options) : base(options) {}
 

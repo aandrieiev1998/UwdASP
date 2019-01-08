@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using UwdASP.Data.Models;
+using UwdASP.Data.Models.Marks;
 
 namespace UwdASP.Data
 {

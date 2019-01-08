@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace UwdASP.Data.Models
+namespace UwdASP.Data.Models.Marks
 {
     public class Mark
     {
